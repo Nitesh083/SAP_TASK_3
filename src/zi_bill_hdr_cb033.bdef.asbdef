@@ -1,0 +1,25 @@
+unmanaged implementation in class zbp_i_bill_hdr_cb033 unique;
+strict ( 2 );
+
+define behavior for ZI_BILL_HDR_CB033 alias BillHeader
+lock master
+authorization master ( instance )
+{
+  create;
+  update;
+  delete;
+  association _Items { create; }
+
+  field ( readonly ) BillUuid;
+}
+
+define behavior for ZI_BILL_ITM_CB033 alias BillItem
+lock dependent by _Header
+authorization dependent by _Header
+{
+  update;
+  delete;
+  association _Header;
+
+  field ( readonly ) ItemUuid, BillUuid;
+}

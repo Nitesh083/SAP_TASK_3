@@ -1,0 +1,19 @@
+projection;
+strict ( 2 );
+
+define behavior for ZC_BILL_HDR_CB033 alias BillHeader
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _Items { create; }
+}
+
+define behavior for ZC_BILL_ITM_CB033 alias BillItem
+{
+  use update;
+  use delete;
+
+  use association _Header;
+}

@@ -1,0 +1,35 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { typeName: 'Bill', typeNamePlural: 'Bills', title: { type: #STANDARD, value: 'BillNumber' } }
+}
+annotate view ZC_BILL_HDR_CB033 with
+{
+  /* This creates the Fiori Object Page layout */
+  @UI.facet: [ 
+    { id: 'idHeader', type: #IDENTIFICATION_REFERENCE, label: 'Bill Details', position: 10 },
+    { id: 'idItems', type: #LINEITEM_REFERENCE, label: 'Bill Items', position: 20, targetElement: '_Items' } 
+  ]
+
+  @UI.hidden: true
+  BillUuid;
+
+  @UI.lineItem: [ { position: 10 } ]
+  @UI.identification: [ { position: 10 } ]
+  BillNumber;
+
+  @UI.lineItem: [ { position: 20 } ]
+  @UI.identification: [ { position: 20 } ]
+  CustomerName;
+
+  @UI.lineItem: [ { position: 30 } ]
+  @UI.identification: [ { position: 30 } ]
+  BillingDate;
+
+  @UI.lineItem: [ { position: 40 } ]
+  @UI.identification: [ { position: 40 } ]
+  TotalAmount;
+
+  @UI.lineItem: [ { position: 50 } ]
+  @UI.identification: [ { position: 50 } ]
+  PaymentStatus;
+}
